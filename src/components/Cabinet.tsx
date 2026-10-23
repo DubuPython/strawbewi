@@ -9,7 +9,7 @@ export default function Cabinet({ letters }: { letters: LetterMeta[] }) {
 
   return (
     <section className="stage">
-      <h1 className="cursive title">Letter for Sheenaaa 🗄️</h1>
+      <h1 className="cursive title">Letters for Sheena 🍓🌸💖</h1>
       <div className="cabinet">
         {letters.map((l) => (
           <button key={l.id} className="drawer" onClick={() => setOpenId(l.id)}>
