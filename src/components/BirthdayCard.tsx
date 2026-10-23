@@ -7,7 +7,7 @@ const NO_PHRASES = [
   'Ayaw mo ba?', 'Bleehh 😝', 'Click Yes na!', 'Makulit ah!', 'No is not an option!',
 ];
 const EMOJIS = ['🍓', '🌸', '💖', '🌺', '✨'];
-const PHOTO = '/happy-bidet.jpg';
+const PHOTO = '/happy bidet.jpg';
 const FALLBACK = 'https://placehold.co/1280x720/fbcfe8/e11d48?text=Your+Landscape+Picture';
 const OPEN_MS = 1600; // envelope opening animation before "Ready kana ba?"
 
