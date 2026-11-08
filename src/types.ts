@@ -7,3 +7,19 @@ export interface LetterMeta {
   emoji: string;
   hint: string;
 }
+
+export interface StrawberryLetter {
+  id: number;
+  title: string;
+  content: string;
+  date?: string;
+}
+
+export interface PolaroidMemory {
+  id: number;
+  emoji: string;
+  caption: string;
+  bgGradient: string;
+  date?: string;
+  image?: string;
+}

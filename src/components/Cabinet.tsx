@@ -7,9 +7,31 @@ export default function Cabinet({ letters }: { letters: LetterMeta[] }) {
   const [openId, setOpenId] = useState<LetterId | null>(null);
   const close = () => setOpenId(null);
 
+  if (openId === 'defense') {
+    return (
+      <div className="cabinet-active-view">
+        <button className="cabinet-nav-back cursive" onClick={close} title="Return to letter cabinet">
+          ← Back to Cabinet
+        </button>
+        <DefenseLetter autoStart finishLabel="Back to Cabinet 🗄️" onFinish={close} />
+      </div>
+    );
+  }
+
+  if (openId === 'birthday') {
+    return (
+      <div className="cabinet-active-view">
+        <button className="cabinet-nav-back cursive" onClick={close} title="Return to letter cabinet">
+          ← Back to Cabinet
+        </button>
+        <BirthdayCard />
+      </div>
+    );
+  }
+
   return (
-    <section className="stage">
-      <h1 className="cursive title">Letters for Sheena 🍓🌸💖</h1>
+    <div className="cabinet-main-view">
+      <h1 className="cursive title cabinet-title">Letters for Sheena 🍓🌸💖</h1>
       <div className="cabinet">
         {letters.map((l) => (
           <button key={l.id} className="drawer" onClick={() => setOpenId(l.id)}>
@@ -21,20 +43,7 @@ export default function Cabinet({ letters }: { letters: LetterMeta[] }) {
           </button>
         ))}
       </div>
-      <p className="hint">Tap a drawer to open a letter</p>
-
-      {openId && (
-        <div className="overlay" onClick={close}>
-          <button className="close" aria-label="Close letter" onClick={close}>×</button>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            {openId === 'defense' ? (
-              <DefenseLetter autoStart finishLabel="Back to the cabinet 🗄️" onFinish={close} />
-            ) : (
-              <BirthdayCard />
-            )}
-          </div>
-        </div>
-      )}
-    </section>
+      <p className="hint cursive cabinet-hint">Tap a drawer to open a special letter</p>
+    </div>
   );
 }

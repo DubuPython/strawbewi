@@ -6,7 +6,7 @@ import type { DefenseStage } from '../types';
 
 const READ_MS = 5500; // how long the letter stays open
 const TUCK_MS = 1500; // letter slides back, envelope closes
-const AUTO_OPEN_MS = 350;
+const AUTO_OPEN_MS = 400;
 
 const NEXT: Partial<Record<DefenseStage, [DefenseStage, number]>> = {
   reading: ['tucking', READ_MS],
@@ -20,7 +20,6 @@ interface Props {
   onFinish: () => void;
 }
 
-/** envelope → letter → tucked back in → bouquet. Used on first load and from the cabinet. */
 export default function DefenseLetter({ autoStart = false, finishLabel, onFinish }: Props) {
   const [stage, setStage] = useState<DefenseStage>('envelope');
 
@@ -39,7 +38,7 @@ export default function DefenseLetter({ autoStart = false, finishLabel, onFinish
 
   if (stage === 'bouquet') {
     return (
-      <div className="sequence">
+      <div className="sequence bouquet-sequence">
         <Bouquet />
         <h2 className="cursive title sub">For you hehehe 💐</h2>
         <button className="btn yes later" onClick={onFinish}>{finishLabel}</button>
@@ -57,7 +56,7 @@ export default function DefenseLetter({ autoStart = false, finishLabel, onFinish
           <p className="cursive msg">{DEFENSE_MESSAGE}</p>
         </Envelope>
       </div>
-      {waiting && <p className="hint">Tap to open me</p>}
+      {waiting && <p className="hint cursive">Tap the envelope to open me ✨</p>}
     </div>
   );
 }
